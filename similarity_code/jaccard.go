@@ -1,4 +1,4 @@
-package main
+package similarity_code
 
 //两个集合A和B交集元素的个数在A、B并集中所占的比例，称为这两个集合的杰卡德系数(0~1之间)
 //k-Shingles
