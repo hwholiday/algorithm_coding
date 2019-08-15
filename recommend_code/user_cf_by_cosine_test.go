@@ -39,5 +39,5 @@ func TestGetRecommendList(t *testing.T) {
 
 func TestUserCfByCosine(t *testing.T) {
 	UserCfByCosine("/home/go/src/algorithm_coding/recommend_code/ml-100k/u.data",
-		"/home/ghost/go/src/algorithm_coding/recommend_code/ml-100k/u.item", 186, 50)
+		"/home/go/src/algorithm_coding/recommend_code/ml-100k/u.item", 186, 50)
 }
