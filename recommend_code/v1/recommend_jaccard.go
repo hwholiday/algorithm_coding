@@ -1,4 +1,4 @@
-package main
+package v1
 
 import (
 	"bufio"
@@ -78,7 +78,7 @@ func main() {
 	}
 }
 
-func recommendByUserCF(path string, uid int, k int) ([]MidScore) {
+func recommendByUserCF(path string, uid int, k int) []MidScore {
 	data := FileReadLine(path)
 	userScore, itemUser := getScoreList(data)
 	//寻找有相同兴趣的并排序(从高到低)
