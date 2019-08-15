@@ -8,6 +8,7 @@ import (
 	"strings"
 )
 
+//基于用户的推荐(通过共同口味与偏好找相似邻居用户，K-邻居算法，你朋友喜欢，你也可能喜欢)，
 func UserCfByCosine(path, movie string, uid int, k int) {
 	data := GetUserScore(path)
 	userScore, MovieScore := GetUserAndMovieRating(data)
