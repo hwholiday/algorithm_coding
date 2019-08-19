@@ -3,24 +3,31 @@ package bloom_filter_code
 import (
 	"github.com/spaolacci/murmur3"
 	"github.com/willf/bitset"
+	"math"
 )
 
-//计算最佳的配置
-//https://hur.st/bloomfilter/
-//n代表元素的个数
-//p代表假阳率
-//m代表位图长度
-//k代表hash函数的个数
 type BloomFilter struct {
 	m uint64 //数组集合大小
 	k uint32 //hash函数个数
 	b *bitset.BitSet
 }
 
+//m代表位图长度
+//k代表hash函数的个数
 func New(m uint64, k uint32) *BloomFilter {
 	return &BloomFilter{
 		m, k, bitset.New(uint(m)),
 	}
+}
+
+//计算最佳的配置
+//https://hur.st/bloomfilter/
+//n代表最多个不同元素
+//p代表假阳率
+//m代表位图长度
+//k代表hash函数的个数
+func NewWithExpected(n uint, p float64) *BloomFilter {
+	return New(uint64(math.Ceil(-1*float64(n)*math.Log(p)/math.Pow(math.Log(2), 2))), uint32(math.Ceil(math.Log(2)*float64(n)/float64(n))))
 }
 
 func (f *BloomFilter) Add(data []byte) {
