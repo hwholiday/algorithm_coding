@@ -1,4 +1,4 @@
-package algorithm_coding
+package average_code
 
 import "testing"
 
