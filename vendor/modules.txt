@@ -1,0 +1,8 @@
+# github.com/adamzy/cedar-go v0.0.0-20170805034717-80a9c64b256d
+github.com/adamzy/cedar-go
+# github.com/huichen/sego v0.0.0-20180617034105-3f3c8a8cfacc
+github.com/huichen/sego
+# github.com/spaolacci/murmur3 v1.1.0
+github.com/spaolacci/murmur3
+# github.com/willf/bitset v1.1.10
+github.com/willf/bitset
