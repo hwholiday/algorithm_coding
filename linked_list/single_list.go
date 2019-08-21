@@ -80,8 +80,9 @@ func (l *List) Remove(i uint32) {
 	if i == 0 { //删除头
 		l.head = l.head.next
 	} else {
+		//查询要删除节点的上一个节点
 		info := l.head
-		for j := uint32(1); j < i; j++ { //查询要删除节点的上一个节点
+		for j := uint32(1); j < i; j++ {
 			info = info.next
 		}
 		fmt.Println(info.data)
