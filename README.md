@@ -11,3 +11,8 @@
      
 ###  bloom_filter_code  [布隆过滤器]
      1: bloom 布隆过滤器
+     
+###  linked_list  [链表]
+     1: cycle_list  循环链表
+     2: double_list 双向链表
+     3: single_list 单向链表
