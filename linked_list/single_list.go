@@ -71,6 +71,18 @@ func (l *List) Get(i uint32) (data interface{}) {
 	return info.data
 }
 
+func (l *List) GetNode(i uint32) *Node {
+	if i >= l.size {
+		return nil
+	}
+	info := l.head
+	//开始向后移动
+	for j := uint32(0); j < i; j++ {
+		info = info.next
+	}
+	return info
+}
+
 func (l *List) Remove(i uint32) {
 	if i >= l.size {
 		return
