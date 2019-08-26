@@ -117,6 +117,16 @@ func (l *DoubleList) GetAll() []interface{} {
 	return data
 }
 
+func (l *DoubleList) GetAllV2() []interface{} {
+	var data []interface{}
+	node := l.Head
+	for node != nil {
+		data = append(data, node.Data)
+		node = node.Next
+	}
+	return data
+}
+
 func (l *DoubleList) GetHead() *DoubleNode {
 	return l.Head
 }

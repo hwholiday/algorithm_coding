@@ -14,6 +14,7 @@ func TestNewDoubleList(t *testing.T) {
 		Data: 10,
 	})
 	t.Log(l.GetAll())
+	t.Log(l.GetAllV2())
 	t.Log(l.Get(3))
 	t.Log(l.InsertNext(l.Get(2), &DoubleNode{
 		Data: 11,

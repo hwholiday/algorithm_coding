@@ -5,7 +5,7 @@ import (
 )
 
 func TestTwoSum(t *testing.T) {
-	t.Log(twoSum([]int{2, 7, 11, 15}, 6))
+	t.Log(twoSum([]int{2, 7, 11, 15}, 9))
 }
 
 //两数相和
