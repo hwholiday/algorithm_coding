@@ -8,6 +8,7 @@ func TestLengthOfLongestSubstring(t *testing.T) {
 	t.Log(lengthOfLongestSubstring("abcdefgafkzwb"))
 }
 
+//无重复字符的最长子串
 func lengthOfLongestSubstring(s string) int {
 	lastOccurred := make(map[byte]int)
 	start := 0
