@@ -1,7 +1,6 @@
 package linked_list
 
 import (
-	"fmt"
 	"sync"
 )
 
@@ -97,7 +96,6 @@ func (l *List) Remove(i uint32) {
 		for j := uint32(1); j < i; j++ {
 			info = info.next
 		}
-		fmt.Println(info.data)
 		node := info.next //要删除的节点
 		info.next = node.next
 		if i == l.size-1 { //最后一个节点
