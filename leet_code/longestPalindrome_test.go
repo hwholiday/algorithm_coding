@@ -1,12 +1,12 @@
 package leet_code
 
 import (
-	"fmt"
 	"testing"
 )
 
+//最长回文子串
 func TestLongestPalindrome(t *testing.T) {
-	t.Log(longestPalindrome("aaabaaaa"))
+	t.Log(longestPalindrome("ac"))
 }
 
 func longestPalindrome(s string) string {
@@ -26,29 +26,26 @@ func longestPalindrome(s string) string {
 	}
 	var maxLen int
 	var key string
-	fmt.Println(info)
 	for k, v := range info {
 		var cunUse = true
-		var endFor = false
+		j := len(k)
 		for i := 0; i < len(k); i++ {
-			for j := len(k); j > 0; j-- {
-				if k[i:i+1] != k[j-1:j] {
-					cunUse = false
-					endFor = true
-					fmt.Println("not ", k, k[i:i+1], k[j-1:j], j-1, j)
-					break
-				}
-			}
-			if endFor {
+			if k[i:i+1] != k[j-1:j] {
+				//fmt.Println("not ", k, k[i:i+1], k[j-1:j], j-1, j)
+				cunUse = false
 				break
 			}
+			j--
 		}
 		if cunUse {
-			fmt.Println(k)
-			if v >= maxLen {
+			if v > maxLen {
+				maxLen = v
 				key = k
 			}
 		}
+	}
+	if key == "" {
+		return s[:1]
 	}
 	return key
 }
