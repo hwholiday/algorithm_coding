@@ -5,6 +5,7 @@ import (
 	"testing"
 )
 
+//整数反转
 func TestReverse(t *testing.T) {
 	t.Log(reverse(-123))
 }
