@@ -7,5 +7,6 @@ func TestIsMatch(t *testing.T) {
 }
 
 func isMatch(s string, p string) bool {
+
 	return true
 }
