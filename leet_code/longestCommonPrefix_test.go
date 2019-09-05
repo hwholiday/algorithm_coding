@@ -1,7 +1,6 @@
 package leet_code
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -30,7 +29,6 @@ func longestCommonPrefix(strs []string) string {
 				enFor = true
 				break
 			}
-			fmt.Println(v1[i : i+1])
 			if string(v) == v1[i:i+1] {
 				add = true
 			} else {
