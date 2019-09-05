@@ -1,33 +1,50 @@
 package leet_code
 
 import (
+	"fmt"
 	"testing"
 )
 
 //最长公共前缀
 func TestLongestCommonPrefix(t *testing.T) {
-	t.Log(longestCommonPrefix([]string{"aa", "aa", "aa"}))
+	t.Log(longestCommonPrefix([]string{"aca", "cba"}))
 }
 
 func longestCommonPrefix(strs []string) string {
-	/*if len(strs) <= 0 {
+	if len(strs) <= 0 {
 		return ""
 	}
-	var (
-		result string
-		endFor bool
-	)
-	for _, v := range strs {
-
+	if len(strs) == 1 {
+		return strs[0]
 	}
-	for index, v := range strs[0] {
-		result += string(v)
+	var (
+		startData = strs[0]
+		result    string
+	)
+	strs = strs[1:]
+	var enFor bool
+	for i, v := range startData {
+		var add bool
+		for _, v1 := range strs {
+			if i+1 > len(v1) {
+				enFor = true
+				break
+			}
+			fmt.Println(v1[i : i+1])
+			if string(v) == v1[i:i+1] {
+				add = true
+			} else {
+				add = false
+				enFor = true
+				break
 			}
 		}
-		if endFor {
-			result = result[:len(result)-1]
+		if enFor {
 			break
 		}
-	}*/
-	return "result"
+		if add {
+			result += string(v)
+		}
+	}
+	return result
 }
