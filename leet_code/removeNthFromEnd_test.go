@@ -29,7 +29,6 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 		return head
 	}
 	fast := head
-	//获取要截断后的一个
 	for i := 1; i <= n && fast != nil; i++ {
 		fast = fast.Next
 	}
@@ -37,7 +36,6 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 	if fast == nil {
 		return head.Next
 	}
-
 	slow := head
 	for fast.Next != nil {
 		slow = slow.Next
