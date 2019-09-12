@@ -1,6 +1,7 @@
 package leet_code
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -28,6 +29,7 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 		return head
 	}
 	fast := head
+	//获取要截断后的一个
 	for i := 1; i <= n && fast != nil; i++ {
 		fast = fast.Next
 	}
@@ -39,7 +41,9 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 	slow := head
 	for fast.Next != nil {
 		slow = slow.Next
+		fmt.Println("slow", slow.Val)
 		fast = fast.Next
+		fmt.Println("fast", fast.Val)
 	}
 	slow.Next = slow.Next.Next
 	return head
