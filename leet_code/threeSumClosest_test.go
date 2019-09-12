@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-// 最接近的三数之和
+//TODO 最接近的三数之和
 func TestThreeSumClosest(t *testing.T) {
 	log.Fatal(threeSumClosest([]int{-1, 2, 1, -4}, 1))
 }
