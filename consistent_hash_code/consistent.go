@@ -22,12 +22,6 @@ func NewConsistent() *Consistent {
 	}
 }
 
-func (c *Consistent) P() {
-	fmt.Println("c.hashSortNodes", c.hashSortNodes)
-	fmt.Println("c.circle", c.circle)
-	fmt.Println("c.nodes", c.nodes)
-}
-
 func (c *Consistent) Add(node string) error {
 	if _, ok := c.nodes[node]; ok { //判断新加节点是否存在
 		return fmt.Errorf("%s already existed", node)
