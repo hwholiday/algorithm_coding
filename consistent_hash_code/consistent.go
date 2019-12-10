@@ -78,7 +78,7 @@ func (c *Consistent) refreshHashSortNodes() {
 
 func (c *Consistent) searchNearbyIndex(key string) int {
 	hashKey := hashKey(key)
-	index := sort.Search(len(c.hashSortNodes), func(i int) bool { //key算出的节点，距离最近的node节点下标
+	index := sort.Search(len(c.hashSortNodes), func(i int) bool { //key算出的节点，距离最近的node节点下标  sort.Search数组需要升序排列好
 		return c.hashSortNodes[i] >= hashKey
 	})
 	if index >= len(c.hashSortNodes) {
