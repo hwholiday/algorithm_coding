@@ -9,6 +9,10 @@
      
 ###  leet_code  [leet_code刷题]
      1: leet_code刷题
+     
+###  heap  [堆]
+     1: max_heap_test 大顶推   
+     2: min_heap_test 小顶堆     
 
 ###  linked_list  [链表]
      1: cycle_list  循环链表
