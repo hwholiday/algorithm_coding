@@ -55,25 +55,29 @@ func (l *DoubleList) GetAll() (data []Data) {
 	for node != nil {
 		data = append(data, node.Data)
 		if !node.Data.isCycle {
-			l.mu.Lock()
-			//一次性任务,删除
-			if l.IsHead(node) {
-				l.head = node.Next
-			} else if l.IsTail(node) {
-				old := node.Prev
-				old.Next = nil
-				l.tail = node
-
-			} else {
-				old := node.Prev
-				old.Next = node.Next
-			}
-			l.mu.Unlock()
-			l.size--
+			l.remove(node)
 		}
 		node = node.Next
 	}
 	return data
+}
+
+func (l *DoubleList) remove(node *Node) {
+	l.mu.Lock()
+	//一次性任务,删除
+	if l.IsHead(node) {
+		l.head = node.Next
+	} else if l.IsTail(node) {
+		old := node.Prev
+		old.Next = nil
+		l.tail = node
+
+	} else {
+		old := node.Prev
+		old.Next = node.Next
+	}
+	l.mu.Unlock()
+	l.size--
 }
 func (l *DoubleList) GetHead() *Node {
 	return l.head

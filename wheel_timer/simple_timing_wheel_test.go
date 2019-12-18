@@ -1,6 +1,10 @@
 package wheel_timer
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+	"time"
+)
 
 func TestNewDoubleList(t *testing.T) {
 	l := NewDoubleList()
@@ -21,4 +25,29 @@ func TestNewDoubleList(t *testing.T) {
 	}})
 	t.Log(l.GetAll())
 	t.Log(l.GetAll())
+}
+
+func TestNewSimpleTimingWheel(t *testing.T) {
+	tw := NewSimpleTimingWheel()
+	tw.Start()
+	tw.AddTask(5*time.Second, func() {
+		fmt.Println("5秒后执行", time.Now().UnixNano())
+		//tw.Stop()
+	})
+	tw.AddTask(5*time.Second, func() {
+		fmt.Println("5秒后执行", time.Now().UnixNano())
+		//tw.Stop()
+	})
+	tw.AddTask(5*time.Second, func() {
+		fmt.Println("5秒后执行", time.Now().UnixNano())
+		//tw.Stop()
+	})
+	tw.AddTask(5*time.Second, func() {
+		fmt.Println("5秒后执行", time.Now().UnixNano())
+		//tw.Stop()
+	})
+	tw.AddTask(10*time.Second, func() {
+		fmt.Println("10秒后执行")
+	})
+	time.Sleep(time.Hour)
 }
