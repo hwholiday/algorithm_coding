@@ -1,7 +1,5 @@
 package wheel_timer
 
-import "time"
-
 type SimpleTimingWheel struct {
 }
 
@@ -15,6 +13,6 @@ func NewSimpleTimingWheel(option ...ModOption) *SimpleTimingWheel {
 	return op
 }
 
-func (s *SimpleTimingWheel) AddTask(duration time.Duration, f func()) {
+func (s *SimpleTimingWheel) AddTask() {
 
 }
