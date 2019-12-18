@@ -29,7 +29,7 @@ func SetNodeNum(nodeNum int) ModOption {
 
 func NewSimpleTimingWheel(option ...ModOption) *SimpleTimingWheel {
 	op := &SimpleTimingWheel{
-		interval:    time.Second,
+		interval:    time.Second * 1,
 		nodeNum:     60 * 60 * 24,
 		currentNode: 0,
 		list:        make([]*DoubleList, 60*60*24),
@@ -81,16 +81,24 @@ func (s *SimpleTimingWheel) runTask(node *DoubleList) {
 	if node == nil {
 		return
 	}
-	for _, v := range node.GetAll() {
+	nodes := node.GetAll()
+	//fmt.Println("循环中", time.Now().Format("2006-01-02 15:04:05"),nodes)
+	for _, v := range nodes {
+		if v.circle > 0 {
+			continue
+		}
 		go v.f()
 	}
 }
 
 func (s *SimpleTimingWheel) AddTask(d time.Duration, f func()) {
-	delaySeconds := int(d.Seconds())
-	s.list[delaySeconds-1].Append(Data{
-		f:       f,
-		isCycle: false,
+	pos, circle := s.getPositionAndCircle(d)
+	if pos > 0 {
+		pos = pos - 1
+	}
+	s.list[pos].Append(Data{
+		f:      f,
+		circle: circle,
 	})
 }
 
@@ -99,7 +107,7 @@ func (s *SimpleTimingWheel) getPositionAndCircle(d time.Duration) (pos int, circ
 	intervalSeconds := int(s.interval.Seconds())
 	circle = int(delaySeconds / intervalSeconds / s.nodeNum) //添加轮数
 	//计算要放的节点
-
-	pos = int(s.currentNode+delaySeconds/intervalSeconds) % s.nodeNum //计算位置
+	//剩下的时候在一轮就可以搞定
+	pos = int(delaySeconds - (intervalSeconds * s.nodeNum * circle) + s.currentNode)
 	return
 }
