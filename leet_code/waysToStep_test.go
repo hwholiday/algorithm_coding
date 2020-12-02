@@ -4,6 +4,7 @@ import (
 	"testing"
 )
 
+//三步问题
 func waysToStep(n int) int {
 	var d = make([]int, n+4)
 	d[0] = 0
