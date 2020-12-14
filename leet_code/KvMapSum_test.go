@@ -1,6 +1,7 @@
 package leet_code
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -48,6 +49,7 @@ func (t *TireData) Insert(key string, val int) {
 	t.isEnd = true
 }
 func (t *TireData) Search(key string) (data []*TireData) {
+	//app
 	for _, v := range key {
 		if t.node[v] == nil {
 			return
@@ -61,6 +63,7 @@ func (t *TireData) Search(key string) (data []*TireData) {
 func GetNode(d *TireData, data *[]*TireData) {
 	if d.isEnd {
 		*data = append(*data, d)
+		fmt.Println("d", d.key)
 	}
 	for _, v := range d.node {
 		GetNode(v, data)
@@ -69,7 +72,7 @@ func GetNode(d *TireData, data *[]*TireData) {
 
 func Test_TireData(t *testing.T) {
 	var tire = &TireData{node: make(map[rune]*TireData, 26)}
-	tire.Insert("apl", 2)
+	tire.Insert("app", 2)
 	tire.Insert("apple", 3)
-	tire.Search("ap")
+	tire.Search("app")
 }

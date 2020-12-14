@@ -13,8 +13,7 @@ func Constructor() Trie {
 func (t *Trie) Insert(word string) {
 	for _, v := range word {
 		if t.node[v] == nil { //没找到该节点
-			vt := &Trie{node: make(map[rune]*Trie, 26), isLast: false}
-			t.node[v] = vt
+			t.node[v] = &Trie{node: make(map[rune]*Trie, 26), isLast: false}
 		}
 		t = t.node[v] //找到节点，跳到下一个节点
 	}
@@ -45,7 +44,7 @@ func (t *Trie) StartsWith(prefix string) bool {
 func (t *Trie) StartsPrx(prefix string) (res *[]interface{}) {
 	for _, v := range prefix {
 		if t.node[v] == nil { //没找到该节点
-			break
+			return
 		}
 		t = t.node[v] //找到节点，跳到下一个节点
 	}
