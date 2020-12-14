@@ -42,6 +42,28 @@ func (t *Trie) StartsWith(prefix string) bool {
 	return true
 }
 
+func (t *Trie) StartsPrx(prefix string) (res *[]interface{}) {
+	for _, v := range prefix {
+		if t.node[v] == nil { //没找到该节点
+			break
+		}
+		t = t.node[v] //找到节点，跳到下一个节点
+	}
+	res = &[]interface{}{}
+	GetStartsPrx(t, res)
+	return
+}
+
+func GetStartsPrx(t *Trie, res *[]interface{}) {
+	if t.isLast {
+		*res = append(*res, t.val)
+	}
+	for _, v := range t.node {
+		GetStartsPrx(v, res)
+	}
+	return
+}
+
 //查找数据
 func (t *Trie) SearchNode(key string) (res []interface{}) {
 	root := t

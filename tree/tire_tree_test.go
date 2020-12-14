@@ -8,8 +8,9 @@ func TestTrie_Insert(t *testing.T) {
 	t.Log(trie.Search("apple"))
 	t.Log(trie.Search("app"))
 	t.Log(trie.StartsWith("app"))
-	trie.Insert("abe")
+	trie.Insert("aee")
 	trie.Insert("aef")
 	t.Log(trie.SearchNode("ae"))
+	t.Log(trie.StartsPrx("ae"))
 
 }
