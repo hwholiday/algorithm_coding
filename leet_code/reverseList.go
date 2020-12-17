@@ -1,13 +1,13 @@
 package leet_code
 
-type ListNode struct {
+type ListNodeA struct {
 	Val  int
-	Next *ListNode
+	Next *ListNodeA
 }
 
 //反转链表
-func reverseList(head *ListNode) *ListNode {
-	var cur *ListNode
+func reverseList(head *ListNodeA) *ListNodeA {
+	var cur *ListNodeA
 	for head != nil {
 		node := head.Next
 		head.Next = cur
